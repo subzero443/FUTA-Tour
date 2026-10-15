@@ -1,0 +1,76 @@
+/* FUTA Tour responsive refinements: loaded AFTER style.css. */
+:root { color-scheme: light; }
+html, body, #root { width: 100%; min-width: 0; }
+body { overflow-x: hidden; }
+.app-root { min-height: 100vh; min-height: 100dvh; }
+button, a { touch-action: manipulation; }
+img, svg { max-width: 100%; }
+.hero-text, .map-column, .detail-copy, .place-copy { min-width: 0; }
+.hero h1 { overflow-wrap: anywhere; }
+.map-frame { isolation: isolate; }
+.campus-leaflet-map { width: 100%; height: 100%; }
+:focus-visible { outline: 3px solid #9673f6; outline-offset: 3px; }
+
+/* Tablet landscape, narrow laptops, and iPads in split screen. */
+@media (min-width: 671px) and (max-width: 1024px) {
+  .main-content { padding-inline: clamp(16px, 2.8vw, 28px); }
+  .hero { gap: 10px; }
+  .hero h1 { font-size: clamp(40px, 5.5vw, 61px); }
+  .explorer-layout { grid-template-columns: clamp(275px, 33vw, 340px) minmax(0, 1fr); }
+  .map-frame { min-height: 450px; }
+  .map-detail-panel { flex-wrap: wrap; }
+  .detail-action { min-height: 44px; }
+}
+
+/* iPad portrait: map first, landmark directory below it. */
+@media (min-width: 671px) and (max-width: 900px) and (orientation: portrait) {
+  .hero { grid-template-columns: 1fr; padding: 48px 16px 18px; }
+  .hero-text { max-width: 670px; }
+  .hero-visual { width: min(100%, 530px); justify-self: center; transform: none; }
+  .explorer-layout { display: flex; flex-direction: column; }
+  .map-column { order: 1; }
+  .explorer-sidebar { order: 2; border-right: 0; border-top: 1px solid #eeeaf6; }
+  .map-frame { flex: none; height: clamp(360px, 54dvh, 620px); min-height: 360px; }
+  .places-scroll { max-height: 340px; }
+}
+
+/* Phones, including narrow models and foldable cover screens. */
+@media (max-width: 670px) {
+  .main-content { padding-inline: clamp(12px, 4vw, 18px); }
+  .hero { padding-top: clamp(28px, 7vw, 48px); }
+  .hero h1 { font-size: clamp(35px, 9.4vw, 60px); line-height: 1.1; }
+  .hero-eyebrow { white-space: normal; line-height: 1.6; }
+  .hero-actions .btn { min-height: 44px; }
+  .hero-visual { max-width: 100%; width: 100%; }
+  .explorer-layout { min-width: 0; }
+  .map-frame { flex: none; height: clamp(330px, 48dvh, 540px); min-height: 330px; }
+  .map-detail-panel { display: grid; grid-template-columns: 43px minmax(0, 1fr); align-items: center; gap: 10px; }
+  .detail-action { grid-column: 1 / -1; width: 100%; justify-content: center; font-size: 12px; min-height: 44px; }
+  .detail-copy strong, .detail-copy small { overflow-wrap: anywhere; }
+  .searchbox input, .login-input { font-size: 16px; } /* Avoid iOS focus zoom. */
+  .map-topbar { gap: 5px; }
+  .map-topbar b { overflow-wrap: anywhere; }
+  .mobile-nav { padding-inline: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right)); }
+  .mobile-nav button { min-height: 44px; }
+  .install-banner { left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); }
+  .modal-backdrop { padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+  .modal-card { max-height: min(90dvh, 720px); }
+}
+
+@media (max-width: 359px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .map-overlay-title { max-width: calc(100% - 20px); white-space: normal; }
+  .map-badge { font-size: 7px; }
+  .mobile-nav button { font-size: 9px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .map-frame { height: 65dvh; min-height: 280px; }
+  .splash-mark { width: 62px; height: 62px; margin-bottom: 14px; }
+  .splash h1 { font-size: 36px; margin-top: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-phone, .floating-pill, .splash-mark { animation: none !important; }
+}
